@@ -10,7 +10,7 @@ export class AuthController {
   @UsePipes(new ValidationPipe())
   @Post('register')
   async register(@Body() dto: authDto) {
-    return this.authService.register(dto);
+    return await this.authService.register(dto);
   }
 
 }
