@@ -1,4 +1,8 @@
-import { Injectable, BadRequestException, UnauthorizedException } from '@nestjs/common'
+import {
+	Injectable,
+	BadRequestException,
+	UnauthorizedException
+} from '@nestjs/common'
 import { PrismaService } from '../prisma.service'
 import { authDto } from './dto/auth.dto'
 import { faker } from '@faker-js/faker'
@@ -60,14 +64,15 @@ export class AuthService {
 
 	//login function
 	async login(dto: authDto) {
-		const user = await this.validateUser(dto);
+		const user = await this.validateUser(dto)
 		const tokens = await this.issueTokens(user.id)
 		return {
-			user, ...tokens
-		};
+			user,
+			...tokens
+		}
 	}
 	async getNewTokens(dto: tokenDto) {
-		const refreshToken = dto.refreshToken;
+		const refreshToken = dto.refreshToken
 		const result = await this.jwt.verifyAsync(refreshToken)
 		if (!result) throw new UnauthorizedException('Invalid token')
 		const user = await this.prisma.user.findUnique({
@@ -81,9 +86,6 @@ export class AuthService {
 		}
 	}
 
-
-
-
 	private async validateUser(dto: authDto) {
 		const user = await this.prisma.user.findUnique({
 			where: {
@@ -91,9 +93,8 @@ export class AuthService {
 			}
 		})
 		if (!user) throw new UnauthorizedException('Invalid email or password')
-		const isValid = await verify(user.password, dto.password);
+		const isValid = await verify(user.password, dto.password)
 		if (!isValid) throw new UnauthorizedException('Invalid email or password')
 		return user
-		
 	}
 }

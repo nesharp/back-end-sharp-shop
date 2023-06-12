@@ -20,7 +20,4 @@ export class userDto {
 	@IsString()
 	@IsOptional()
 	phone?: string
-
-	
-
 }

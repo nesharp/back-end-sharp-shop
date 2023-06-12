@@ -1,6 +1,6 @@
-import { IsString } from "class-validator";
+import { IsString } from 'class-validator'
 
 export class tokenDto {
-    @IsString()
+	@IsString()
 	refreshToken: string
 }

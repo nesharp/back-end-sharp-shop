@@ -42,6 +42,7 @@ model Category {
   updatedAt DateTime  @updatedAt @map("updated_at")
   name      String    @unique
   products  Product[]
+  slug        String      @unique
 }
 
 model Review {
