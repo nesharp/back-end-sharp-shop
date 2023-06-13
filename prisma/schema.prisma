@@ -17,7 +17,7 @@ model User {
   phone      String   @unique @default("")
   avatarPath String   @default("https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-unidentified-user-illustration-mysterious-social-png-image_4816405.png") @map("avatar_path")
   orders     Order[]
-  rewiews    Review[]
+  reviews    Review[]
 }
 
 model Product {
