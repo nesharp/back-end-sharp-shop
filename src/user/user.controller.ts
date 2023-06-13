@@ -6,10 +6,10 @@ import {
 	Patch,
 	UsePipes,
 	Put,
-	Param
+	Param,
+	ValidationPipe,
+	Body
 } from '@nestjs/common'
-import { ValidationPipe, Body } from '@nestjs/common'
-import { async } from 'rxjs'
 import { Auth } from 'src/auth/decorators/auth.decoraror'
 import { CurrentUser } from 'src/auth/decorators/user.decorator'
 import { userDto } from './user.dto'
