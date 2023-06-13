@@ -2,8 +2,6 @@ import * as dotenv from 'dotenv'
 import { PrismaClient, Product } from '@prisma/client'
 import { faker } from '@faker-js/faker'
 import { getRandomNumber } from '../utils/random-number'
-import { slugify } from '../utils/generate-slug'
-
 dotenv.config()
 const prisma = new PrismaClient()
 
@@ -18,7 +16,7 @@ const createProducts = async (quantity: number) => {
 		const product = await prisma.product.create({
 			data: {
 				name: productName,
-				slug: slugify(productName),
+				slug: faker.helpers.slugify(productName).toLowerCase(),
 				description: faker.lorem.paragraph(),
 				price: +faker.commerce.price(),
 				images: Array.from({
@@ -30,7 +28,7 @@ const createProducts = async (quantity: number) => {
 						slug: faker.helpers.slugify(categoryName).toLowerCase()
 					}
 				},
-				rewiews: {
+				reviews: {
 					create: [
 						{
 							rating: 5,

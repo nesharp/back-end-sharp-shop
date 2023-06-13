@@ -1,7 +1,11 @@
-import { Controller } from '@nestjs/common'
+import { Body, Controller, Get } from '@nestjs/common'
 import { StatisticService } from './statistic.service'
-import { PrismaService } from '../prisma.service'
-import { UserService } from '../user/user.service'
 
 @Controller('statistic')
-export class StatisticController {}
+export class StatisticController {
+	constructor(private readonly statisticService: StatisticService) {}
+	@Get()
+	async getStatistic(@Body() id: number) {
+		return await this.statisticService.getStatistic(id)
+	}
+}

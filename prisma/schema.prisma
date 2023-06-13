@@ -33,7 +33,7 @@ model Product {
   userId      Int?
   orderItems  OrderItem[]
   category    Category?   @relation(fields: [categoryId], references: [id])
-  rewiews     Review[]
+  reviews     Review[]
 }
 
 model Category {
