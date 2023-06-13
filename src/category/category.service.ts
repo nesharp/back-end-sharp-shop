@@ -1,8 +1,6 @@
 import { Injectable } from '@nestjs/common'
-import { CreateCategoryDto } from './dto/create-category.dto'
-import { UpdateCategoryDto } from './dto/update-category.dto'
 import { PrismaService } from '../prisma.service'
-import { returnCategoryObject } from '../../dist/category/return-category.object'
+import { returnCategoryObject } from './return-category.object'
 import { CategoryDto } from './category.dto'
 import { faker } from '@faker-js/faker'
 @Injectable()
@@ -28,7 +26,7 @@ export class CategoryService {
 			},
 			data: {
 				name: dto.name,
-				slug: faker.helpers.slugify(dto.name)
+				slug: faker.helpers.slugify(dto.name).toLowerCase()
 			}
 		})
 	}
@@ -67,5 +65,6 @@ export class CategoryService {
 		const category = await this.prisma.category.findMany({
 			select: returnCategoryObject
 		})
+		return category
 	}
 }

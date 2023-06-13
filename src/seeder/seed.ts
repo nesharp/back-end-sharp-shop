@@ -20,14 +20,14 @@ const createProducts = async (quantity: number) => {
 				name: productName,
 				slug: slugify(productName),
 				description: faker.lorem.paragraph(),
-				price: +faker.commerce.price(10, 99, 100),
+				price: +faker.commerce.price(),
 				images: Array.from({
 					length: getRandomNumber(2, 6)
-				}).map(() => faker.image.imageUrl()),
+				}).map(() => faker.image.url()),
 				category: {
 					create: {
 						name: categoryName,
-						slug: slugify(categoryName)
+						slug: faker.helpers.slugify(categoryName).toLowerCase()
 					}
 				},
 				rewiews: {

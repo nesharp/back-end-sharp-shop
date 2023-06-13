@@ -11,7 +11,7 @@ import {
 	Put
 } from '@nestjs/common'
 import { CategoryService } from './category.service'
-import { Auth } from '../../dist/auth/decorators/auth.decoraror'
+import { Auth } from '../auth/decorators/auth.decoraror'
 import { CategoryDto } from './category.dto'
 
 @Controller('category')

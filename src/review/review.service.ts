@@ -1,26 +1,47 @@
-import { Injectable } from '@nestjs/common';
-import { CreateReviewDto } from './dto/create-review.dto';
-import { UpdateReviewDto } from './dto/update-review.dto';
+import { Injectable } from '@nestjs/common'
+import { returnReviewObject } from './return-review.object'
+import { PrismaService } from '../prisma.service'
+import { ReviewDto } from './review.dto'
+import { faker } from '@faker-js/faker'
 
 @Injectable()
 export class ReviewService {
-  create(createReviewDto: CreateReviewDto) {
-    return 'This action adds a new review';
-  }
+	constructor(private prisma: PrismaService) {}
+	async getAverageRating(productId: number) {
+		return this.prisma.review
+			.aggregate({
+				where: { productId: productId },
+				_avg: { rating: true }
+			})
+			.then(data => data._avg)
+	}
 
-  findAll() {
-    return `This action returns all review`;
-  }
+	async leaveReview(userId: number, productId: number, dto: ReviewDto) {
+		return this.prisma.review.create({
+			data: {
+				text: dto.text,
+				rating: dto.rating,
+				product: {
+					connect: {
+						id: productId
+					}
+				},
+				user: {
+					connect: {
+						id: userId
+					}
+				}
+			}
+		})
+	}
 
-  findOne(id: number) {
-    return `This action returns a #${id} review`;
-  }
-
-  update(id: number, updateReviewDto: UpdateReviewDto) {
-    return `This action updates a #${id} review`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} review`;
-  }
+	async getAll() {
+		const reviews = await this.prisma.review.findMany({
+			orderBy: {
+				createdAt: 'desc'
+			},
+			select: returnReviewObject
+		})
+		return reviews
+	}
 }
