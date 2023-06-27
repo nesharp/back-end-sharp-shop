@@ -26,7 +26,7 @@ export class ReviewController {
 	@Auth()
 	@Post('leave/:id')
 	async leaveReview(
-		@Param('id') id: number,
+		@Param('id') id: string,
 		@Body() dto: ReviewDto,
 		@CurrentUser('id') userId: number
 	) {
@@ -35,7 +35,7 @@ export class ReviewController {
 
 	@UsePipes(new ValidationPipe())
 	@Get('average/:id')
-	async getAverageRating(@Param('id') id: number) {
+	async getAverageRating(@Param('id') id: string) {
 		return this.reviewService.getAverageRating(+id)
 	}
 }

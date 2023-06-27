@@ -28,7 +28,7 @@ export class CategoryController {
 	@HttpCode(200)
 	@Auth()
 	@Put(':id')
-	async update(@Body() dto: CategoryDto, @Param('id') id: number) {
+	async update(@Body() dto: CategoryDto, @Param('id') id: string| number) {
 		return await this.categoryService.update(+id, dto)
 	}
 	// create
@@ -44,14 +44,14 @@ export class CategoryController {
 	@HttpCode(200)
 	@Auth()
 	@Delete(':id')
-	async delete(@Param('id') id: number) {
+	async delete(@Param('id') id: string | number) {
 		return await this.categoryService.delete(+id)
 	}
 
 	// get by id
 	@Get(':id')
 	@Auth()
-	async getById(@Param('id') id: number) {
+	async getById(@Param('id') id: string | number) {
 		return await this.categoryService.byId(+id)
 	}
 	// 	get by slug

@@ -3,9 +3,9 @@ import { StatisticService } from './statistic.service'
 
 @Controller('statistic')
 export class StatisticController {
-	constructor(private readonly statisticService: StatisticService) {}
+	constructor(private readonly statisticService: StatisticService) { }
 	@Get()
-	async getStatistic(@Body() id: number) {
-		return await this.statisticService.getStatistic(id)
+	async getStatistic(@Body() id: number | string) {
+		return await this.statisticService.getStatistic( +id)
 	}
 }
