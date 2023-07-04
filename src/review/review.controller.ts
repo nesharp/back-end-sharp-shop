@@ -35,7 +35,7 @@ export class ReviewController {
 
 	@UsePipes(new ValidationPipe())
 	@Get('average/:id')
-	async getAverageRating(@Param('id') id: string) {
+	async getAverageRating(@Param('id') id: string | number) {
 		return this.reviewService.getAverageRating(+id)
 	}
 }

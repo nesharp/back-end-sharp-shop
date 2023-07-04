@@ -14,7 +14,7 @@ import { Auth } from 'src/auth/decorators/auth.decoraror'
 import { CurrentUser } from 'src/auth/decorators/user.decorator'
 import { userDto } from './user.dto'
 
-@Controller('users')
+@Controller('user')
 export class UserController {
 	constructor(private readonly userService: UserService) {}
 	@Get('profile')

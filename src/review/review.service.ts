@@ -14,6 +14,7 @@ export class ReviewService {
 				_avg: { rating: true }
 			})
 			.then(data => data._avg)
+	
 	}
 
 	async leaveReview(userId: number, productId: number, dto: ReviewDto) {
