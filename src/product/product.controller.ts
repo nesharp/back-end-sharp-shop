@@ -56,7 +56,7 @@ export class ProductController {
 	async byId(@Param('id') id: string) {
 		return this.productService.byId(+id)
 	}
-	@Get('category/:categoty')
+	@Get('category/:category')
 	async byCategory(@Param('category') category: string) {
 		return this.productService.byCategory(category)
 	}
