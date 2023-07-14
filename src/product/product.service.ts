@@ -42,21 +42,22 @@ export class ProductService {
 			? {
 					OR: [
 						{
-							category: {
-								name: {
-									contains: searchTerm,
-									mode: 'insensitive'
-								}
-							},
+							// category: {
+							// 	name: {
+							// 		contains: searchTerm,
+							// 		mode: 'insensitive'
+							// 	}
+							// },
 							name: {
 								contains: searchTerm,
 								mode: 'insensitive'
 							},
-							description: {
-								contains: searchTerm,
-								mode: 'insensitive'
-							}
+							// description: {
+							// 	contains: searchTerm,
+							// 	mode: 'insensitive'
+							// }
 						}
+					
 					]
 			  }
 			: {}
@@ -69,6 +70,7 @@ export class ProductService {
 			take: perPage,
 			select: productReturnObject
 		})
+		console.log(searchTerm, products)
 		return {
 			products,
 			length: await this.prisma.product.count({

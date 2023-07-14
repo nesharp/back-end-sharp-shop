@@ -48,20 +48,10 @@ let ProductService = exports.ProductService = class ProductService {
             ? {
                 OR: [
                     {
-                        category: {
-                            name: {
-                                contains: searchTerm,
-                                mode: 'insensitive'
-                            }
-                        },
                         name: {
                             contains: searchTerm,
                             mode: 'insensitive'
                         },
-                        description: {
-                            contains: searchTerm,
-                            mode: 'insensitive'
-                        }
                     }
                 ]
             }
@@ -74,6 +64,7 @@ let ProductService = exports.ProductService = class ProductService {
             take: perPage,
             select: return_product_object_1.productReturnObject
         });
+        console.log(searchTerm, products);
         return {
             products,
             length: await this.prisma.product.count({

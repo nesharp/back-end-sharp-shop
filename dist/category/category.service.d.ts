@@ -9,8 +9,8 @@ export declare class CategoryService {
         updatedAt?: Date;
         id?: number;
         slug?: string;
-        products?: import(".prisma/client").Product[];
         _count?: import(".prisma/client").Prisma.CategoryCountOutputType;
+        products?: import(".prisma/client").Product[];
     }>;
     update(id: number, dto: CategoryDto): Promise<import(".prisma/client").Category>;
     delete(id: number): Promise<import(".prisma/client").Category>;
@@ -21,8 +21,8 @@ export declare class CategoryService {
         updatedAt?: Date;
         id?: number;
         slug?: string;
-        products?: import(".prisma/client").Product[];
         _count?: import(".prisma/client").Prisma.CategoryCountOutputType;
+        products?: import(".prisma/client").Product[];
     }>;
     getAll(): Promise<{
         name?: string;
@@ -30,7 +30,7 @@ export declare class CategoryService {
         updatedAt?: Date;
         id?: number;
         slug?: string;
-        products?: import(".prisma/client").Product[];
         _count?: import(".prisma/client").Prisma.CategoryCountOutputType;
+        products?: import(".prisma/client").Product[];
     }[]>;
 }
