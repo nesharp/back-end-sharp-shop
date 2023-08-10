@@ -31,8 +31,8 @@ export class ProductController {
 
 	@Post()
 	@Auth()
-	async create() {
-		return this.productService.create()
+	async create(@Body() dto: ProductDto) {
+		return this.productService.create(dto)
 	}
 
 	@Delete('/:id')
