@@ -28,8 +28,8 @@ let ProductController = exports.ProductController = class ProductController {
     async getSimilar(id) {
         return this.productService.getSimilar(+id);
     }
-    async create() {
-        return this.productService.create();
+    async create(dto) {
+        return this.productService.create(dto);
     }
     async delete(id) {
         return this.productService.delete(+id);
@@ -65,8 +65,9 @@ __decorate([
 __decorate([
     (0, common_1.Post)(),
     (0, auth_decoraror_1.Auth)(),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [product_dto_1.ProductDto]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "create", null);
 __decorate([

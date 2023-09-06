@@ -131,13 +131,20 @@ let ProductService = exports.ProductService = class ProductService {
             }
         });
     }
-    async create() {
+    async create(dto) {
+        const { name, description, price, images, categoryId } = dto;
         return this.prisma.product.create({
             data: {
-                name: '',
-                slug: '',
-                description: '',
-                price: 0
+                name,
+                slug: faker_1.faker.helpers.slugify(name).toLowerCase(),
+                description,
+                price,
+                images,
+                category: {
+                    connect: {
+                        id: categoryId
+                    }
+                }
             }
         });
     }

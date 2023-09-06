@@ -39,7 +39,7 @@ export declare class ProductController {
         orderItems?: import(".prisma/client").OrderItem[];
         _count?: import(".prisma/client").Prisma.ProductCountOutputType;
     }[]>;
-    create(): Promise<import(".prisma/client").Product>;
+    create(dto: ProductDto): Promise<import(".prisma/client").Product>;
     delete(id: string): Promise<import(".prisma/client").Product>;
     update(id: string, dto: ProductDto): Promise<import(".prisma/client").Product>;
     bySlug(slug: string): Promise<{

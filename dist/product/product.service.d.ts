@@ -60,7 +60,7 @@ export declare class ProductService {
     }[]>;
     update(id: number, dto: ProductDto): Promise<import(".prisma/client").Product>;
     delete(id: number): Promise<import(".prisma/client").Product>;
-    create(): Promise<import(".prisma/client").Product>;
+    create(dto: ProductDto): Promise<import(".prisma/client").Product>;
     bySlug(slug: string): Promise<{
         name?: string;
         createdAt?: Date;
