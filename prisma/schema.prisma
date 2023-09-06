@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
@@ -42,7 +43,7 @@ model Category {
   updatedAt DateTime  @updatedAt @map("updated_at")
   name      String    @unique
   products  Product[]
-  slug        String      @unique
+  slug      String    @unique
 }
 
 model Review {
@@ -77,10 +78,9 @@ model OrderItem {
   productId Int?     @map("product_id")
   order     Order?   @relation(fields: [orderId], references: [id])
   product   Product? @relation(fields: [productId], references: [id])
+
   @@map("Order_item")
 }
-
-
 
 enum EnumOrderStatus {
   PENDING
