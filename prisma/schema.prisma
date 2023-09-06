@@ -20,7 +20,7 @@ model User {
   orders     Order[]
   reviews    Review[]
 }
-
+// --
 model Product {
   id          Int         @id @default(autoincrement())
   createdAt   DateTime    @default(now())
