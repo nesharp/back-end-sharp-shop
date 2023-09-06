@@ -19,8 +19,8 @@
 
 ARG NODE_VERSION=18.17.0
 ARG NODE_ENV=build
-ARG APP_PORT=8080
-ARG IMAGE_NAME=nestjs-starter
+ARG APP_PORT=3000
+ARG IMAGE_NAME=back-end-sharp-shop
 
 # Utiliza una versión ligera de Node.js como imagen base
 FROM node:${NODE_VERSION}-alpine as builder
